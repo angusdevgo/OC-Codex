@@ -1,0 +1,31 @@
+﻿*.lnk
+auth.json
+config.toml
+settings.json
+*.local.*
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+bin/
+obj/
+dist/
+**/bin/
+**/obj/
+
+.codex/
+.codex-switch/
+codex-back/
+c-o-safety-backups/
+
+# Local maintenance scripts
+Finalize-O-C.bat
+Source_Codes/tools/ApplyDBackupAndRefreshCO.ps1
+Source_Codes/tools/CleanDesktop.ps1
+Source_Codes/tools/CleanProject.ps1
+Source_Codes/tools/FinalizeCO.ps1
+Source_Codes/tools/MigrateBackupsToD.ps1
+
+# Local development notes and private project history
+Source_Codes/docs/superpowers/
+Source_Codes/docs/C-O-development-guide.md
+Source_Codes/docs/provider-sync-source-map.md
