@@ -44,6 +44,7 @@ if (-not (Test-Path -LiteralPath $exe)) {
 }
 
 Copy-Item -LiteralPath (Join-Path $repoRoot "README.md") -Destination (Join-Path $packageDir "README.md") -Force
+Copy-Item -LiteralPath (Join-Path $repoRoot "LICENSE") -Destination (Join-Path $packageDir "LICENSE") -Force
 Copy-Item -LiteralPath (Join-Path $repoRoot "Run-O-C.vbs") -Destination (Join-Path $packageDir "Run-O-C.vbs") -Force
 Copy-Item -LiteralPath (Join-Path $repoRoot "Create-O-C-Shortcut.bat") -Destination (Join-Path $packageDir "Create-O-C-Shortcut.bat") -Force
 
