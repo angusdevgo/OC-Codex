@@ -3,6 +3,7 @@ setlocal
 title O-C GitHub Sync Tool
 
 set "ROOT_DIR=%~dp0"
+set "MAX_PUSH_ATTEMPTS=3"
 
 if not exist "%ROOT_DIR%\.git" (
   echo [ERROR] Git repository not found:
@@ -51,12 +52,24 @@ if errorlevel 1 (
 
 echo.
 echo [4/4] Pushing to GitHub...
+set /a PUSH_ATTEMPT=1
+
+:push_retry
 git push
-if errorlevel 1 (
-  echo [ERROR] git push failed. Please check network or GitHub credentials.
+if not errorlevel 1 goto push_success
+
+if %PUSH_ATTEMPT% geq %MAX_PUSH_ATTEMPTS% (
+  echo [ERROR] git push failed after %MAX_PUSH_ATTEMPTS% attempts. Please check network or GitHub credentials.
   pause
   exit /b 1
 )
+
+echo [WARN] Retrying git push... attempt %PUSH_ATTEMPT%/%MAX_PUSH_ATTEMPTS%
+set /a PUSH_ATTEMPT+=1
+timeout /t 3 /nobreak >nul
+goto push_retry
+
+:push_success
 
 echo.
 echo ===================================================

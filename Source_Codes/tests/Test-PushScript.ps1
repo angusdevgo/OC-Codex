@@ -14,10 +14,13 @@ foreach ($needle in @(
     "set ""ROOT_DIR=%~dp0""",
     "git status -s",
     "set ""msg=",
+    "set ""MAX_PUSH_ATTEMPTS=3""",
     "git add .",
     "git -c core.quotepath=false commit -m ""%msg%""",
     "git push",
-    "Nothing new to commit, continuing to push existing commits"
+    "Nothing new to commit, continuing to push existing commits",
+    "Retrying git push",
+    "timeout /t 3 /nobreak >nul"
 )) {
     if (-not $source.Contains($needle)) {
         throw "Push script missing expected behavior: $needle"
