@@ -26,6 +26,7 @@ Source_Codes/tools/FinalizeCO.ps1
 Source_Codes/tools/MigrateBackupsToD.ps1
 
 # Local development notes and private project history
+docs/superpowers/
 Source_Codes/docs/superpowers/
 Source_Codes/docs/C-O-development-guide.md
 Source_Codes/docs/provider-sync-source-map.md
